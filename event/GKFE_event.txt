@@ -4,3 +4,38 @@
 #
 ######################################################
 namespace = khansfleetextended
+######################################################
+#   Great Khan's Fleet First Init Add
+######################################################
+contry_event = {
+	id = khansfleetextended.100
+	hide_window = yes
+
+	trigger = {
+		
+	}
+}
+
+######################################################
+#   Great Khan's Fleet Month Random Generate
+######################################################
+contry_event = {
+	id = khansfleetextended.101
+	hide_window = yes
+
+	trigger = {
+		
+	}
+}
+
+######################################################
+#   Great Khan's Fleet Khan Death Event Remove Flag
+######################################################
+contry_event = {
+	id = khansfleetextended.199
+	hide_window = yes
+
+	trigger = {
+		
+	}
+}
