@@ -28,6 +28,58 @@ country_event = {
 	}
 }
 
+
+#Create khar-s Fleet
+country_event = {
+	id = khansfleetextended.101
+	hide_window = yes
+	is_triggered_only = yes
+	trigger = {
+		OR = {
+			is_country_type = awakened_marauders
+			AND = {
+				exists = event_target:raider_khanate
+				is_same_empire = event_target:raider_khanate
+			}
+		}
+		NOT = { has_global_flag = GKFE_extended_fleet_init }
+	}	
+
+	immediate = {
+		#Raise a Flag as the initial fleet generation has been done
+		set_global_flag = GKFE_extended_fleet_init
+		#Save the target country scope for this mod only
+		from = { save_event_target_as = gkfe_extened_fleet_awaking_karn }
+		#Generate Fleet to Awakened Marauder
+		event_target:marauder_rally_point = {
+			while = {
+				count = 15
+				#Fleet Generate
+				create_fleet = {
+					name = "NAME_Greet_Khan_add_fleet"
+					effect = {
+						set_owner = event_target:raider_khanate
+						assign_leader = last_created_leader
+						set_location = prev
+						prev = { CmtEffectResetLoop = yes }
+						while = { count = 39 CmtEffectCreateShip_VoidChampion = yes }
+						while = { count = 1 CmtEffectCreateShip_AncestralGlory = yes }
+
+						CmtFleetSetAuxParam_KhanCombat = yes
+					}
+				}
+			}
+		}
+		#Notification to players
+		#Notify me to make sure the mod is working
+		every_playable_country = {
+			limit = {
+				is_ai = no
+			}
+			country_event = { id = khansfleetextended.102 days = 10  random  = 10 } 
+		}
+	}
+}
 ######################################################
 #   Great Khan's Fleet Month Random Generate
 ######################################################
