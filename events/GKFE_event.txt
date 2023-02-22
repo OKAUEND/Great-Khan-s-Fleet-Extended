@@ -7,12 +7,24 @@ namespace = khansfleetextended
 ######################################################
 #   Great Khan's Fleet First Init Add
 ######################################################
-contry_event = {
+country_event = {
 	id = khansfleetextended.100
 	hide_window = yes
 
+	# is_triggered_only = yes
+
 	trigger = {
-		
+		#Karn Awaked Flag
+		has_global_flag = marauder_crisis_ongoing
+		NOT = { has_global_flag = GKFE_extended_fleet_init }
+		CmtTriggerIsKhanCountry = yes
+	}
+
+	immediate = {
+		#Random fireEvent
+		event_target:raider_khanate = {
+			country_event = { id = khansfleetextended.101 days = 1  random  = 10 }
+		}
 	}
 }
 
