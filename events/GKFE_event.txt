@@ -116,3 +116,15 @@ contry_event = {
 		
 	}
 }
+
+
+######################################################
+#   Great Khan's Fleet Extended Debug Event
+######################################################
+#Debug Event
+country_event = {
+	id = khansfleetextended.999
+	is_triggered_only = yes
+
+	option = { name = "Call Debud Greate Karn!!!" }
+}
