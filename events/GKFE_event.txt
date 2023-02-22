@@ -80,6 +80,19 @@ country_event = {
 		}
 	}
 }
+
+
+#Player Announce Event
+country_event = {
+	id = khansfleetextended.102
+	title = khansfleetextended.102.name
+	desc = khansfleetextended.102.desc
+
+	is_triggered_only = yes
+
+	option = { name = "TEST" }
+}
+
 ######################################################
 #   Great Khan's Fleet Month Random Generate
 ######################################################
