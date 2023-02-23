@@ -23,10 +23,21 @@ country_event = {
 				is_same_empire = event_target:raider_khanate
 			}
 		}
-		NOT = { has_global_flag = GKFE_extended_fleet_init }
+		AND = {
+			NOT = { has_global_flag = GKFE_extended_fleet_init_start }
+			NOT = { has_global_flag = GKFE_extended_fleet_init_end }
+			NOT = { has_global_flag = great_khan_dead }
+		}
+
 	}	
 
 	immediate = {
+		#Raise a Flag as the initial fleet generation has been done
+		set_global_flag = GKFE_extended_fleet_init_start
+		if = { 
+			limit = { has_global_flag = great_khan_dead }
+			remove_global_flag = GKFE_great_khan_dead_fleet_extended
+		}
 		#Random fireEvent
 		event_target:raider_khanate = {
 			country_event = { id = khansfleetextended.101 days = 1  random  = 10 }
@@ -48,12 +59,13 @@ country_event = {
 				is_same_empire = event_target:raider_khanate
 			}
 		}
-		NOT = { has_global_flag = GKFE_extended_fleet_init }
+		has_global_flag = GKFE_extended_fleet_init_start
+		NOT = { has_global_flag = great_khan_dead }
 	}	
 
 	immediate = {
-		#Raise a Flag as the initial fleet generation has been done
-		set_global_flag = GKFE_extended_fleet_init
+		set_global_flag = GKFE_extended_fleet_init_end
+		remove_global_flag = GKFE_extended_fleet_init_start
 		#Save the target country scope for this mod only
 		from = { save_event_target_as = gkfe_extened_fleet_awaking_karn }
 		#Generate Fleet to Awakened Marauder
