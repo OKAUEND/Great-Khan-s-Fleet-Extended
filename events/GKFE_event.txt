@@ -201,7 +201,22 @@ country_event = {
 	}
 }
 
+
+#Player Announce Event
+country_event = {
+	id = khansfleetextended.122
+	title = khansfleetextended.122.name
+	desc = khansfleetextended.122.desc
+	picture = GFX_evt_pirate_armada
+	show_sound = event_space_battle
+
+	is_triggered_only = yes
+
+	immediate = {
+		remove_global_flag = GKFE_wating_karn_fleet_generate_six_month
 	}
+
+	option = { name = khansfleetextended.122.a }
 }
 
 ######################################################
