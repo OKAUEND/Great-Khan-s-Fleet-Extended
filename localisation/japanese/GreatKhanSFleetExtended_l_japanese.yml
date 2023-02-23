@@ -1,0 +1,8 @@
+﻿l_japanese:
+NAME_Greet_Khan_add_fleet: "大ハーン遠征騎兵隊"
+
+##################################################
+# イベント
+khansfleetextended.102.name: "諸部族が大ハーンへ加わる"
+khansfleetextended.102.desc: ""
+khansfleetextended.102.a: "勢いがましていく…"
