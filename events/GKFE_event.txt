@@ -127,8 +127,41 @@ country_event = {
 ######################################################
 #   Great Khan's Fleet Month Random Generate
 ######################################################
-contry_event = {
-	id = khansfleetextended.101
+country_event = {
+	id = khansfleetextended.120
+	hide_window = yes
+
+	trigger = {
+		has_global_flag = marauder_crisis_ongoing
+		OR = {
+			OR = {
+				CmtTriggerIsKhanCountry = yes
+				is_country_type = awakened_marauders
+			}
+			AND = {
+				exists = event_target:raider_khanate
+				is_same_empire = event_target:raider_khanate
+			}
+		}
+		AND = {
+			has_global_flag = GKFE_extended_fleet_init_end
+			NOT = { has_global_flag = GKFE_wating_karn_fleet_generate_six_month }
+			NOT = { has_global_flag = great_khan_dead }
+		}
+	}	
+
+	# mean_time_to_happen = {
+	# 	months = 2
+	# }
+	
+	immediate = {
+		set_global_flag = GKFE_wating_karn_fleet_generate_six_month
+		#Random fireEvent
+		event_target:raider_khanate = {
+			country_event = { id = khansfleetextended.121 days = 150 random = 40 }
+		}
+	}
+}
 	hide_window = yes
 
 	trigger = {
