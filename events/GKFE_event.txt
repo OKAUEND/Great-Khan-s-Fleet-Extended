@@ -207,13 +207,56 @@ country_event = {
 ######################################################
 #   Great Khan's Fleet Khan Death Event Remove Flag
 ######################################################
-contry_event = {
-	id = khansfleetextended.199
+country_event = {
+	id = khansfleetextended.150
 	hide_window = yes
 
 	trigger = {
-		
+		AND = {
+			has_global_flag = marauder_crisis_ongoing
+			OR = {
+				OR = {
+					CmtTriggerIsKhanCountry = yes
+					is_country_type = awakened_marauders
+				}
+				AND = {
+					exists = event_target:raider_khanate
+					is_same_empire = event_target:raider_khanate
+				}
+			}
+			has_global_flag = great_khan_dead
+			has_global_flag = GKFE_extended_fleet_init_end
+			NOT = { has_global_flag = GKFE_great_khan_dead_fleet_extended }
+		}
+	}	
+
+	immediate = {
+		#Raise a Flag as the initial fleet generation has been done
+		remove_global_flag = GKFE_extended_fleet_init_start
+		remove_global_flag = GKFE_extended_fleet_init_end
+		remove_global_flag = GKFE_wating_karn_fleet_generate_six_month
+
+		set_global_flag = GKFE_great_khan_dead_fleet_extended
+		#Random fireEvent
+		every_playable_country = {
+			limit = {
+				is_ai = no
+			}
+			country_event = { id = khansfleetextended.151 } 
+		}
 	}
+}
+
+country_event = {
+	id = khansfleetextended.151
+	title = khansfleetextended.151.name
+	desc = khansfleetextended.151.desc
+	picture = GFX_evt_mercenary_fleet
+	show_sound = event_radio_chatter_03
+
+	is_triggered_only = yes
+
+	option = { name = khansfleetextended.151.a }
 }
 
 
