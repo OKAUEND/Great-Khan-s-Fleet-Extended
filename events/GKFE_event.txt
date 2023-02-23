@@ -220,6 +220,20 @@ country_event = {
 }
 
 ######################################################
+#   Great Khan's Fleet Khan Lose
+######################################################
+# country_event = {
+# 	id = khansfleetextended.125
+# 	hide_window = yes
+
+# 	is_triggered_only = yes
+
+# 	# trigger = {
+		
+# 	# }
+# }
+
+######################################################
 #   Great Khan's Fleet Khan Death Event Remove Flag
 ######################################################
 country_event = {
