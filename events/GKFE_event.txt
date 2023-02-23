@@ -68,6 +68,19 @@ country_event = {
 		remove_global_flag = GKFE_extended_fleet_init_start
 		#Save the target country scope for this mod only
 		from = { save_event_target_as = gkfe_extened_fleet_awaking_karn }
+		while = {
+			count = 15
+			clone_leader = {
+				target = event_target:great_khan_ruler
+				class = admiral
+				skill = 6
+				event_leader = yes
+				traits = {
+					trait = leader_trait_admiral_chosen
+					trait = leader_trait_eager
+				}
+			}
+		}
 		#Generate Fleet to Awakened Marauder
 		event_target:marauder_rally_point = {
 			while = {
