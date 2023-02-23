@@ -162,10 +162,45 @@ country_event = {
 		}
 	}
 }
+
+country_event = {
+	id = khansfleetextended.121
 	hide_window = yes
 
+	is_triggered_only = yes
+
 	trigger = {
-		
+		NOT = { has_global_flag = great_khan_dead }
+	}	
+
+	immediate = {
+		event_target:marauder_rally_point = {
+			while = {
+				count = 2
+				#Fleet Generate
+				create_fleet = {
+					name = "NAME_Greet_Khan_add_fleet_random_month"
+					effect = {
+						set_owner = event_target:raider_khanate
+						assign_leader = last_created_leader
+						set_location = prev
+						prev = { CmtEffectResetLoop = yes }
+						while = { count = 30 CmtEffectCreateShip_Lancer = yes }
+						while = { count = 10 CmtEffectCreateShip_VoidChampion = yes }
+						CmtFleetSetAuxParam_KhanCombat = yes
+					}
+				}
+			}
+		}
+		every_playable_country = {
+			limit = {
+				is_ai = no
+			}
+			country_event = { id = khansfleetextended.122 days = 10 random = 5 } 
+		}
+	}
+}
+
 	}
 }
 
