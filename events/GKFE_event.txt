@@ -118,10 +118,12 @@ country_event = {
 	id = khansfleetextended.102
 	title = khansfleetextended.102.name
 	desc = khansfleetextended.102.desc
+	picture = GFX_evt_pirate_armada
+	show_sound = event_space_battle_02
 
 	is_triggered_only = yes
 
-	option = { name = "TEST" }
+	option = { name = khansfleetextended.102.a }
 }
 
 ######################################################
