@@ -1,4 +1,4 @@
-﻿l_japanese:
+l_japanese:
 NAME_Greet_Khan_add_fleet: "大ハーン遠征騎兵隊"
 
 ##################################################
@@ -6,3 +6,9 @@ NAME_Greet_Khan_add_fleet: "大ハーン遠征騎兵隊"
 khansfleetextended.102.name: "諸部族が大ハーンへ加わる"
 khansfleetextended.102.desc: ""
 khansfleetextended.102.a: "勢いがましていく…"
+khansfleetextended.122.name: "大ハーンの元へ更に集う"
+khansfleetextended.122.desc: ""
+khansfleetextended.122.a: "止めなくては"
+khansfleetextended.151.name: "大ハーンの死の影響"
+khansfleetextended.151.desc: ""
+khansfleetextended.151.a: "驚異は去った"
