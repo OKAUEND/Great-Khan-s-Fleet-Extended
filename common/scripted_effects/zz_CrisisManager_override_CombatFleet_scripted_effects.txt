@@ -1,0 +1,129 @@
+### Fleet for Khan Own
+CmtEffectCreateAdmiralty_Khan1stFleet = {		### Exception: Leader = event_target:great_khan
+	event_target:raider_khanate = {
+	# CmtEffectCreateFleet_Khan1stFleet = {
+		create_fleet = {
+			name = "NAME_Chosen_of_the_Great_Khan"
+			effect = {
+				set_owner = prev
+				event_target:CmtGlobalVar = { set_variable = { which = CmtVarWhileControlShip value = CmtVarFleetPower_Khan } }
+				prev = { CmtEffectResetLoop = yes }
+				while = {
+					limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarWhileControlShip value > 0.125 } } }
+					event_target:CmtGlobalVar = { change_variable = { which = CmtVarWhileControlShip value = -0.25 } }
+					while = { count = 10 CmtEffectCreateShip_Outrider = yes }		## 18
+					while = { count = 10 CmtEffectCreateShip_Lancer = yes }			## 12
+					while = { count = 5 CmtEffectCreateShip_VoidChampion = yes }	## 6
+					prev = {
+						CmtEffectProgressLoop4 = yes
+						switch = {
+							trigger = has_country_flag
+							CmtFlagLoopA = {
+								prev = {
+									CmtEffectCreateShip_Outrider = yes
+									CmtEffectCreateShip_VoidChampion = yes
+								}
+							}
+							CmtFlagLoopB = { prev = { CmtEffectCreateShip_Outrider = yes } }
+							CmtFlagLoopC = { prev = { CmtEffectCreateShip_AncestralGlory = yes } }		## 1
+							CmtFlagLoopZ = { prev = { CmtEffectCreateShip_VoidChampion = yes } }
+						}
+					}
+				}
+				CmtFleetSetAuxParam_KhanCombat = yes
+				assign_leader = event_target:great_khan
+				set_fleet_flag = khan_fleet
+			}
+			settings = {
+				can_upgrade = no
+				can_disband = no
+				can_change_composition = no
+				can_change_leader = no
+				uses_naval_capacity = no
+			}
+		}
+	}
+}
+
+CmtEffectCreateFleet_Khan2ndFleet = {	### Exception: Leader = exiled_khan
+	create_fleet = {
+		name = "NAME_Chosen_of_the_Great_Khan"
+		effect = {
+			set_owner = prev
+			event_target:CmtGlobalVar = { set_variable = { which = CmtVarWhileControlShip value = CmtVarFleetPower_Khan } }
+			prev = { CmtEffectResetLoop = yes }
+			while = {
+				limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarWhileControlShip value > 0.125 } } }
+				event_target:CmtGlobalVar = { change_variable = { which = CmtVarWhileControlShip value = -0.25 } }
+				while = { count = 15 CmtEffectCreateShip_Outrider = yes }		## 18
+				while = { count = 15 CmtEffectCreateShip_Lancer = yes }			## 12
+				while = { count = 5 CmtEffectCreateShip_VoidChampion = yes }	## 6
+				prev = {
+					CmtEffectProgressLoop4 = yes
+					switch = {
+						trigger = has_country_flag
+						CmtFlagLoopA = {
+							prev = {
+								CmtEffectCreateShip_Outrider = yes
+								CmtEffectCreateShip_VoidChampion = yes
+							}
+						}
+						CmtFlagLoopB = { prev = { CmtEffectCreateShip_Outrider = yes } }
+						CmtFlagLoopC = { prev = { CmtEffectCreateShip_AncestralGlory = yes } }		## 1
+						CmtFlagLoopZ = { prev = { CmtEffectCreateShip_VoidChampion = yes } }
+					}
+				}
+			}
+			CmtFleetSetAuxParam_KhanCombat = yes
+			set_leader = exiled_khan
+			set_fleet_flag = khan_fleet
+		}
+		settings = {
+			can_upgrade = no
+			can_disband = no
+			can_change_composition = no
+			can_change_leader = no
+			uses_naval_capacity = no
+		}
+	}
+}
+
+### Consorts of Khan
+# Prev = planet
+CmtEffectCreateFleet_KhanStandard = {
+	CmtEffectCreateAdmiral_MarauderStandard = yes
+	create_fleet = {
+		effect = {
+			set_owner = prev
+			event_target:CmtGlobalVar = { set_variable = { which = CmtVarWhileControlShip value = CmtVarFleetPower_Khan } }
+			prev = { CmtEffectResetLoop = yes }
+			while = {
+				limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarWhileControlShip value > 0.125 } } }
+				event_target:CmtGlobalVar = { change_variable = { which = CmtVarWhileControlShip value = -0.25 } }
+
+				while = { count = 8 CmtEffectCreateShip_Outrider = yes }		## 16
+				while = { count = 8 CmtEffectCreateShip_Lancer = yes }			## 8
+				CmtEffectCreateShip_VoidChampion = yes							## 6
+
+				prev = {
+					CmtEffectProgressLoop4 = yes
+					switch = {
+						trigger = has_country_flag
+						CmtFlagLoopA = { prev = { CmtEffectCreateShip_VoidChampion = yes } }
+						CmtFlagLoopB = {}
+						CmtFlagLoopC = { prev = { CmtEffectCreateShip_AncestralGlory = yes } }		## 1
+						CmtFlagLoopZ = { prev = { CmtEffectCreateShip_VoidChampion = yes } }
+					}
+				}
+			}
+
+			CmtFleetSetAuxParam_KhanCombat = yes
+			assign_leader = last_created_leader
+		}
+		settings = {
+			can_upgrade = $DIADOCHI|no$
+			can_change_composition = $DIADOCHI|no$
+			uses_naval_capacity = no
+		}
+	}
+}
