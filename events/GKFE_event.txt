@@ -68,39 +68,11 @@ country_event = {
 		remove_global_flag = GKFE_extended_fleet_init_start
 		#Save the target country scope for this mod only
 		from = { save_event_target_as = gkfe_extened_fleet_awaking_karn }
-		while = {
-			count = 15
-			clone_leader = {
-				target = event_target:great_khan_ruler
-				class = admiral
-				skill = 6
-				event_leader = yes
-				traits = {
-					trait = leader_trait_admiral_chosen
-					trait = leader_trait_eager
-				}
-			}
-		}
-		#Generate Fleet to Awakened Marauder
-		event_target:marauder_rally_point = {
-			while = {
-				count = 15
-				#Fleet Generate
-				create_fleet = {
-					name = "NAME_Greet_Khan_add_fleet"
-					effect = {
-						set_owner = event_target:raider_khanate
-						assign_leader = last_created_leader
-						set_location = prev
-						prev = { CmtEffectResetLoop = yes }
-						while = { count = 39 CmtEffectCreateShip_VoidChampion = yes }
-						while = { count = 1 CmtEffectCreateShip_AncestralGlory = yes }
 
-						CmtFleetSetAuxParam_KhanCombat = yes
-					}
-				}
-			}
+		event_target:marauder_rally_point = {
+			GKFE_KhanStarterPack_Expended = yes 
 		}
+
 		#Notification to players
 		#Notify me to make sure the mod is working
 		every_playable_country = {
@@ -177,22 +149,7 @@ country_event = {
 
 	immediate = {
 		event_target:marauder_rally_point = {
-			while = {
-				count = 2
-				#Fleet Generate
-				create_fleet = {
-					name = "NAME_Greet_Khan_add_fleet_random_month"
-					effect = {
-						set_owner = event_target:raider_khanate
-						assign_leader = last_created_leader
-						set_location = prev
-						prev = { CmtEffectResetLoop = yes }
-						while = { count = 30 CmtEffectCreateShip_Lancer = yes }
-						while = { count = 10 CmtEffectCreateShip_VoidChampion = yes }
-						CmtFleetSetAuxParam_KhanCombat = yes
-					}
-				}
-			}
+			GKFE_Khan_Add_random_month = yes
 		}
 		every_playable_country = {
 			limit = {

@@ -1,0 +1,111 @@
+### Consorts of Khan
+# This = planet
+# Prev = event_target:raider_khanate
+GKFE_KhanStarterPack_Expended = {
+	prev = {
+		get_marauder_species = { PLANET = prev }
+		event_target:CmtGlobalVar = { set_variable = { which = CmtVarWhileControlFleet value = CmtVarCombatFleetNumber_Khan } }
+		while = {
+			count = 20
+			GKFE_createFleet_KhanStandard = yes
+		}
+		while = {
+			count = 10
+			CmtEffectCreateFleet_KhanConstructor = yes
+		}
+		while = {
+			count = 5
+			CmtEffectCreateFleet_KhanArmy = yes
+		}
+	}
+}
+
+### Consorts of Khan
+# Prev = planet
+GKFE_createFleet_KhanStandard = {
+	CmtEffectCreateAdmiral_MarauderStandard = yes
+	create_fleet = {
+		name = "NAME_Greet_Khan_add_fleet"
+		effect = {
+			set_owner = prev
+			prev = { CmtEffectResetLoop = yes }
+			while = { count = 20 CmtEffectCreateShip_Outrider = yes }		## 16
+			while = { count = 30 CmtEffectCreateShip_Lancer = yes }			## 8
+			while = { count = 20 CmtEffectCreateShip_VoidChampion = yes }			## 8						## 6
+			CmtEffectCreateShip_AncestralGlory = yes
+
+			prev = {
+				CmtEffectProgressLoop4 = yes
+				switch = {
+					trigger = has_country_flag
+					CmtFlagLoopA = { prev = { CmtEffectCreateShip_VoidChampion = yes } }
+					CmtFlagLoopB = {}
+					CmtFlagLoopC = { prev = { CmtEffectCreateShip_AncestralGlory = yes } }		## 1
+					CmtFlagLoopZ = { prev = { CmtEffectCreateShip_VoidChampion = yes } }
+				}
+			}
+
+			CmtFleetSetAuxParam_KhanCombat = yes
+			assign_leader = last_created_leader
+		}
+		settings = {
+			can_upgrade = $DIADOCHI|no$
+			can_change_composition = $DIADOCHI|no$
+			uses_naval_capacity = no
+		}
+	}
+}
+
+
+GKFE_Khan_Add_random_month = {
+	prev = {
+		get_marauder_species = { PLANET = prev }
+		event_target:CmtGlobalVar = { set_variable = { which = CmtVarWhileControlFleet value = CmtVarCombatFleetNumber_Khan } }
+		while = {
+			limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarWhileControlFleet value > 0.875 } } }
+			event_target:CmtGlobalVar = { change_variable = { which = CmtVarWhileControlFleet value = -1 } }
+			while = {
+				count = 4
+				GKFE_createFleet_Khan_random_month = yes
+			}
+			while = {
+				count = 2
+				CmtEffectCreateFleet_KhanConstructor = yes
+				CmtEffectCreateFleet_KhanArmy = yes
+			}
+		}
+	}
+}
+
+GKFE_createFleet_Khan_random_month = {
+	CmtEffectCreateAdmiral_MarauderStandard = yes
+	create_fleet = {
+		name = "NAME_Greet_Khan_add_fleet_random_month"
+		effect = {
+			set_owner = prev
+			prev = { CmtEffectResetLoop = yes }
+			while = { count = 30 CmtEffectCreateShip_Outrider = yes }		## 16
+			while = { count = 30 CmtEffectCreateShip_Lancer = yes }			## 8
+			while = { count = 10 CmtEffectCreateShip_VoidChampion = yes }			## 8						## 6
+
+			prev = {
+				CmtEffectProgressLoop4 = yes
+				switch = {
+					trigger = has_country_flag
+					CmtFlagLoopA = { prev = { CmtEffectCreateShip_VoidChampion = yes } }
+					CmtFlagLoopB = {}
+					CmtFlagLoopC = { prev = { CmtEffectCreateShip_AncestralGlory = yes } }		## 1
+					CmtFlagLoopZ = { prev = { CmtEffectCreateShip_VoidChampion = yes } }
+				}
+			}
+
+			CmtFleetSetAuxParam_KhanCombat = yes
+			assign_leader = last_created_leader
+		}
+		settings = {
+			can_upgrade = $DIADOCHI|no$
+			can_change_composition = $DIADOCHI|no$
+			uses_naval_capacity = no
+		}
+	}
+}
