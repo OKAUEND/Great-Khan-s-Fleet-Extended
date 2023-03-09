@@ -91,7 +91,7 @@ country_event = {
 	title = khansfleetextended.102.name
 	desc = khansfleetextended.102.desc
 	picture = GFX_evt_pirate_armada
-	show_sound = event_space_battle_02
+	show_sound = event_red_alert
 
 	is_triggered_only = yes
 
