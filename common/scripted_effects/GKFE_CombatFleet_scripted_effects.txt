@@ -66,11 +66,12 @@ GKFE_Khan_Add_random_month = {
 		get_marauder_species = { PLANET = prev }
 		event_target:CmtGlobalVar = { set_variable = { which = CmtVarWhileControlFleet value = CmtVarCombatFleetNumber_Khan } }
 		while = {
-			count = 4
+			count = 5
 			GKFE_createFleet_Khan_random_month = yes
 		}
 		while = {
 			count = 2
+			GKFE_createFleet_KhanStandard = yes
 			CmtEffectCreateFleet_KhanConstructor = yes
 			CmtEffectCreateFleet_KhanArmy = yes
 		}
