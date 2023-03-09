@@ -132,7 +132,7 @@ country_event = {
 		set_global_flag = GKFE_wating_karn_fleet_generate_six_month
 		#Random fireEvent
 		event_target:raider_khanate = {
-			country_event = { id = khansfleetextended.121 days = 150 random = 40 }
+			country_event = { id = khansfleetextended.121 days = 180 random = 40 }
 		}
 	}
 }
