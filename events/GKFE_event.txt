@@ -121,7 +121,7 @@ country_event = {
 			has_global_flag = GKFE_extended_fleet_init_end
 			NOT = { has_global_flag = GKFE_wating_karn_fleet_generate_six_month }
 			NOT = { has_global_flag = great_khan_dead }
-			fleet_power < 500000
+			fleet_power < 350000
 		}
 	}	
 
@@ -133,7 +133,7 @@ country_event = {
 		set_global_flag = GKFE_wating_karn_fleet_generate_six_month
 		#Random fireEvent
 		event_target:raider_khanate = {
-			country_event = { id = khansfleetextended.121 days = 90 random = 40 }
+			country_event = { id = khansfleetextended.121 days = 160 random = 40 }
 		}
 	}
 }
